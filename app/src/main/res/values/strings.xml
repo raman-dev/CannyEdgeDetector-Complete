@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Canny Edge Detector</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="resolution_string">Resolution</string>
+    <string name="resolution_set">resolution_list</string>
+    <string name="aspect_list">aspectRatioList</string>
+    <string name="aspect_title">Aspect Ratio</string>
+    <string name="resolution_title">Resolution</string>
+
+    <string name="prewitt_filter">Prewitt</string>
+    <string name="sobel_filter">Sobel</string>
+    <string name="robert_filter">Robert</string>
+
+
+</resources>
