@@ -72,7 +72,7 @@ public class CameraOperationManager {
     private CameraDevice.StateCallback mCameraDeviceStateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
-            Log.i(TAG, "Camera Opened!");
+            //Log.i(TAG, "Camera Opened!");
             mCameraDevice = camera;
             //don't start capture session here
 
@@ -81,7 +81,7 @@ public class CameraOperationManager {
         @Override
         public void onClosed(@NonNull CameraDevice camera) {
             super.onClosed(camera);
-            Log.i(TAG,"Camera Closed!");
+            //Log.i(TAG,"Camera Closed!");
         }
 
         @Override
@@ -93,19 +93,19 @@ public class CameraOperationManager {
         public void onError(@NonNull CameraDevice camera, int error) {
             switch (error){
                 case ERROR_CAMERA_DEVICE:
-                    Log.i(TAG,"ERROR_CAMERA_DEVICE!");
+                    //Log.i(TAG,"ERROR_CAMERA_DEVICE!");
                     break;
                 case ERROR_CAMERA_SERVICE:
-                    Log.i(TAG,"ERROR_CAMERA_SERVICE!");
+                    //Log.i(TAG,"ERROR_CAMERA_SERVICE!");
                     break;
                 case ERROR_CAMERA_DISABLED:
-                    Log.i(TAG,"ERROR_CAMERA_DISABLED!");
+                    //Log.i(TAG,"ERROR_CAMERA_DISABLED!");
                     break;
                 case ERROR_CAMERA_IN_USE:
-                    Log.i(TAG,"ERROR_CAMERA_IN_USE!");
+                    //Log.i(TAG,"ERROR_CAMERA_IN_USE!");
                     break;
                 case ERROR_MAX_CAMERAS_IN_USE:
-                    Log.i(TAG,"ERROR_MAX_CAMERAS_IN_USE!");
+                    //Log.i(TAG,"ERROR_MAX_CAMERAS_IN_USE!");
                     break;
             }
         }
@@ -114,7 +114,7 @@ public class CameraOperationManager {
         @Override
         public void onConfigured(@NonNull CameraCaptureSession session) {
             mCameraCaptureSession = session;
-            Log.i(TAG, "CaptureSession.onConfigured!");
+            //Log.i(TAG, "CaptureSession.onConfigured!");
             startCameraPreview();
         }
 
@@ -125,7 +125,7 @@ public class CameraOperationManager {
 
         @Override
         public void onClosed(@NonNull CameraCaptureSession session) {
-            Log.i(TAG,"CaptureSession.onClosed!");
+            //Log.i(TAG,"CaptureSession.onClosed!");
             super.onClosed(session);
 
         }
@@ -139,20 +139,20 @@ public class CameraOperationManager {
         @Override
         public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
             super.onCaptureCompleted(session, request, result);
-            //Log.i(TAG,"exp_time_used!!!!!=>"+result.get(CaptureResult.SENSOR_EXPOSURE_TIME));
-            //Log.i(TAG,"sensor_sensitivity!!!=>"+result.get(CaptureResult.SENSOR_SENSITIVITY));
+            ////Log.i(TAG,"exp_time_used!!!!!=>"+result.get(CaptureResult.SENSOR_EXPOSURE_TIME));
+            ////Log.i(TAG,"sensor_sensitivity!!!=>"+result.get(CaptureResult.SENSOR_SENSITIVITY));
         }
 
         @Override
         public void onCaptureFailed(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull CaptureFailure failure) {
             super.onCaptureFailed(session, request, failure);
-            Log.i(TAG,"onCaptureFailed!!!");
+            //Log.i(TAG,"onCaptureFailed!!!");
             int reason = failure.getReason();
             if(reason == CaptureFailure.REASON_ERROR){
-                Log.i(TAG,"CaptureFailure.Reason => REASON_ERROR");
+                //Log.i(TAG,"CaptureFailure.Reason => REASON_ERROR");
             }
             else if(reason == CaptureFailure.REASON_FLUSHED){
-                Log.i(TAG,"CaptureFailer.Reason => REASON_FLUSHED");
+                //Log.i(TAG,"CaptureFailer.Reason => REASON_FLUSHED");
             }else{
 
             }
@@ -209,9 +209,9 @@ public class CameraOperationManager {
             exposureTimeRanges = mCameraCharacteristics.get(CameraCharacteristics.SENSOR_INFO_EXPOSURE_TIME_RANGE);
             sensorSensitivityRanges = mCameraCharacteristics.get(CameraCharacteristics.SENSOR_INFO_SENSITIVITY_RANGE);
             if(exposureTimeRanges != null) {
-                Log.i(TAG, "ExposureTimeRanges in ns => " + exposureTimeRanges.toString());
+                //Log.i(TAG, "ExposureTimeRanges in ns => " + exposureTimeRanges.toString());
             }if(sensorSensitivityRanges != null) {
-                Log.i(TAG, "SensorSensitivityRanges => " + sensorSensitivityRanges.toString());
+                //Log.i(TAG, "SensorSensitivityRanges => " + sensorSensitivityRanges.toString());
             }
             //here i can populate the camera size map from
         } catch (CameraAccessException e) {
@@ -251,9 +251,9 @@ public class CameraOperationManager {
      * @param surface A surface the camera can use as an output
      */
     void addSurface(Surface surface) {
-        Log.i(TAG,"Trying to add surface...");
+        //Log.i(TAG,"Trying to add surface...");
         /*if(!blockingQ.contains(surface)) {
-            Log.i(TAG,"Adding surface...");
+            //Log.i(TAG,"Adding surface...");
             blockingQ.offer(surface);
             //send message to the camera thread to take the surface
             mCameraOperationHandler.sendEmptyMessage(NEW_OUTPUT_SURFACE);
@@ -360,7 +360,7 @@ public class CameraOperationManager {
         Size aspect = new Size((width/gcd),(height/gcd));
         int aspect_w = aspect.getWidth();
         int aspect_h = aspect.getHeight();
-        Log.i(TAG,"aspect =>"+aspect.toString());
+        //Log.i(TAG,"aspect =>"+aspect.toString());
 
         StreamConfigurationMap scm = mCameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
         Size closestSize = null;
@@ -442,8 +442,8 @@ public class CameraOperationManager {
                 result.put(aspectString,sizeList);
             }
             for(Map.Entry<String,ArrayList<Size>> entry:result.entrySet()){
-                System.out.println(entry.getKey());
-                System.out.println(entry.getValue());
+                //System.out.println(entry.getKey());
+                //System.out.println(entry.getValue());
             }
         }
 

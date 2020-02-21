@@ -236,7 +236,7 @@ public class CameraFragment extends Fragment implements View.OnTouchListener, Ra
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == CameraOperationManager.CAMERA_CODE && permissions[0].equals(Manifest.permission.CAMERA)) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.i(TAG, "CAMERA_PERMISSION GRANTED!");
+                //Log.i(TAG, "CAMERA_PERMISSION GRANTED!");
             }
         } else {
             getActivity().finish();
@@ -339,7 +339,7 @@ public class CameraFragment extends Fragment implements View.OnTouchListener, Ra
             float diff = Math.abs(e1.getX() - e2.getX());
             if (diff >= SWIPE_RANGE) {
                 mCameraOperationManager.showPreview();
-                System.out.println("Swiped!");
+                //System.out.println("Swiped!");
                 return true;
 
             }
@@ -349,7 +349,7 @@ public class CameraFragment extends Fragment implements View.OnTouchListener, Ra
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
 
-            System.out.println("Clicked !");
+            //System.out.println("Clicked !");
             mCameraOperationManager.takePicture();
             //edge detect this frame
             return true;

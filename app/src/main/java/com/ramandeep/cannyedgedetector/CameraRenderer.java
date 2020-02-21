@@ -116,7 +116,7 @@ class CameraRenderer implements GLSurfaceView.Renderer,SurfaceTexture.OnFrameAva
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         //no need to recreate surface texture multiple times
         if(mSurfaceTexture == null) {
-            System.out.println("ViewWidth,ViewHeight => "+width+"," + height);
+            //System.out.println("ViewWidth,ViewHeight => "+width+"," + height);
             float h = (float) height;
             float w = (float) width;
             //a quad requires 4 vertices in ccw winding order
@@ -134,7 +134,7 @@ class CameraRenderer implements GLSurfaceView.Renderer,SurfaceTexture.OnFrameAva
             switch(cameraOrientation){
                 case Surface.ROTATION_0:
                 case Surface.ROTATION_180:
-                    System.out.println("Camera is 0 | 180 degrees from natural orientation");//meaning camera is in natural orientation
+                    //System.out.println("Camera is 0 | 180 degrees from natural orientation");//meaning camera is in natural orientation
                     //both have the same orientation
                     if(displayRotation != Surface.ROTATION_0 && displayRotation != Surface.ROTATION_180){
                         swapDimensions = true;
@@ -145,13 +145,13 @@ class CameraRenderer implements GLSurfaceView.Renderer,SurfaceTexture.OnFrameAva
 
                     //both have same orientation
                     if(displayRotation != Surface.ROTATION_90 && displayRotation != Surface.ROTATION_270){
-                        System.out.println("Camera is 90|270 degrees from natural orientation");
+                        //System.out.println("Camera is 90|270 degrees from natural orientation");
                         swapDimensions = true;
                     }
                     break;
             }
             if(swapDimensions){
-                System.out.println("SWAP DIMENSIONS!!!");
+                //System.out.println("SWAP DIMENSIONS!!!");
                 //request the best size
                 //{x,y,z,s,t}
                 outputSize = getOutputSize(height,width);//swap since they are perpendicular
@@ -163,7 +163,7 @@ class CameraRenderer implements GLSurfaceView.Renderer,SurfaceTexture.OnFrameAva
                 };
             }else{
                 outputSize = getOutputSize(width,height);
-                System.out.println("DO NOT SWAP DIMENSIONS!!!");
+                //System.out.println("DO NOT SWAP DIMENSIONS!!!");
                 verticesAndTexture = new float[]{
                         -outputSize.getWidth()/2, outputSize.getHeight()/2,0f,1f, 0f, 1f,//top-left
                         -outputSize.getWidth()/2,-outputSize.getHeight()/2,0f,1f, 0f, 0f,//bottom-left
@@ -176,7 +176,7 @@ class CameraRenderer implements GLSurfaceView.Renderer,SurfaceTexture.OnFrameAva
             //if the sensor and display have the same orientation then
             //tex coordinates become 1 to 1 mappings
             //the indices would be 0,1,2,2,3,0
-            System.out.println("Selected output_size =>"+outputSize.toString());
+            //System.out.println("Selected output_size =>"+outputSize.toString());
             configureSurfaceAndCameraQuad(verticesAndTexture,outputSize.getWidth(),outputSize.getHeight());
             //initialize my camera frame processor
             //is there a way to know dimensions before this call?
@@ -226,7 +226,7 @@ class CameraRenderer implements GLSurfaceView.Renderer,SurfaceTexture.OnFrameAva
                     max = s;
                 }
             }
-            System.out.println("USING_SAVED_SIZE!!!");
+            //System.out.println("USING_SAVED_SIZE!!!");
 
             //if this is not already saved then we must save it
             //one as a list of key's

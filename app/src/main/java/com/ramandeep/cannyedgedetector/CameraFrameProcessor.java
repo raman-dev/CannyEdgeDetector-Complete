@@ -332,7 +332,7 @@ public class CameraFrameProcessor {
         public void handleMessage(Message msg) {
             if(msg.what == INITIALIZE_ALLOCS){
                 //wait until dimensions have been calculated and set
-                System.out.println("Waiting to initialize CameraFrameProcessor...");
+                //System.out.println("Waiting to initialize CameraFrameProcessor...");
                 try {
                     initLock.acquire();
                 } catch (InterruptedException e) {
@@ -341,7 +341,7 @@ public class CameraFrameProcessor {
                 initTypes();
                 initAllocations();
                 initScripts();
-                System.out.println("Initialized CameraFrameProcessor.");
+                //System.out.println("Initialized CameraFrameProcessor.");
 
             }else if(msg.what == DISPLAY_SURFACE){
                 display_output.setSurface((Surface)msg.obj);
@@ -365,7 +365,7 @@ public class CameraFrameProcessor {
                 intrinsicYuvToRGB.forEach(display_output);
                 display_output.ioSend();
             }else if(msg.what == EDGE_DETECT){
-                System.out.println("EDGE_DETECTION_STARTED!");
+                //System.out.println("EDGE_DETECTION_STARTED!");
                 edge_detect_input.ioReceive();//accept the frame from the camera
                 //convert to rgba
                 Object[] results = canny_edge_detector.execute(0);
